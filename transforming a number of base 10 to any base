@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+#coding: utf-8
+'''									Matemáticas Discretas
+					Estudiante: Ricardo Juniors Cano Caro.
+					Profesor: Oscar Gómez. 
+					Ejercicio: Transformar un número de base 10 a cualquier base.
+							Fundación Universitaria Konrad Lorenz
+	
+'''
+
+import numpy as np
+numero = input("Ingrese el número: ")
+base = input("Ingrese la base: ")
+guardar = ""
+
+
+while (numero > base):
+    auxiliar=str(numero % base) 
+   
+    if(numero%base>9):
+    	chra= ord(auxiliar[0])+ord(auxiliar[1])-32
+    	auxiliar=chr(chra)
+    guardar = auxiliar + guardar
+    numero = numero/base
+if(numero>9):
+    auxiliar = str(numero)
+    chra= ord(auxiliar[0])+ord(auxiliar[1])-32
+    auxiliar =chr(chra)
+    guardar = auxiliar +guardar
+if(numero<=9): 
+    guardar =  str(numero)+guardar
+
+
+print guardar
+
+
+
