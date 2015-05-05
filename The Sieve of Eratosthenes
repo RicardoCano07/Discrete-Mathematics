@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+#coding: utf-8
+'''									Matemáticas Discretas
+					Estudiante: Ricardo Juniors Cano Caro.
+					Profesor: Oscar Gómez. 
+					Ejercicio: Criba de Eratóstenes.
+							Fundación Universitaria Konrad Lorenz
+	
+'''
+
+
+
+
+import os
+def cls():
+	os.system("cls")
+	
+import numpy as np
+n = input ("digite un numero= ")
+
+A=range (0,n+1)
+B=[]
+for i in range (2, int (np.sqrt(n))+1):
+	for j in range (2,(n/i)+1):
+		A[i*j]=0
+s=0
+A[1]=0
+for k in range (2,n+1):
+	if (A[k]!=0):
+		B.append(A[k])
+		s=s+1
+print B
+print "Los primos que hay son: ",
+print len(B)
