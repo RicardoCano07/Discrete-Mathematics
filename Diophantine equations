@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+#coding: utf-8
+'''									Matemáticas Discretas
+					Estudiante: Laura Karina Luis Acuña, Ricardo Juniors Cano Caro.
+					Profesor: Oscar Gómez. 
+					Ejercicio:Ecuaciones Diofánticas.
+							Fundación Universitaria Konrad Lorenz
+	
+'''
+
+import numpy as np 
+Numero = input("Ingrese un numero ")
+Number = input ("Ingrese un numero  ")
+matriz = np.zeros((20, 4)) 
+residuo = 1
+cont = -1
+
+if(Number > Numero):
+    aux = Number
+    Number = Numero
+    Numero = aux  
+
+while(residuo != 0):
+    cont= cont + 1 
+    cociente = Numero / Number 
+    residuo = Numero % Number
+    matriz[cont][0] = Numero
+    matriz[cont][1] = Number
+    matriz[cont][2] = cociente
+    matriz[cont][3] = residuo
+    Numero = Number
+    Number = residuo
+    
+vector = np.zeros((4))
+
+contad = 2;
+
+vector[0] = matriz[cont -1][0];
+vector[1] = 1;
+vector[2] = matriz[cont - 1][1];
+vector[3] = matriz[cont - 1][2];
+
+while (cont - 1 != 0):
+
+    if (contad % 2 == 0):
+        aux1 = matriz[cont - 2][2];
+        aux2 = vector[3];
+        aux3 = vector[1];
+        aux4 = aux3 + aux2 * aux1;
+        
+        vector[1] = aux4;
+        vector[2] = matriz[cont - 2][0];
+    else:
+
+        aux1 = vector[1];
+        aux2 = matriz[cont - 2][2];
+        aux3 = vector[3];
+        aux4 = aux1 * aux2 + aux3;
+        
+        vector[3] = aux4;
+        vector[0] = matriz[cont - 2][0];
+    
+    cont = cont -1
+    contad = contad + 1
+    
+total = " "
+
+for i in range (4):
+    total = total + str (int(vector[i]))
+    if(i == 1):
+        total = total + " -"
+    if (i == 0 or i == 2):
+        total = total +  " * " 
+
+print vector
+print total
